@@ -16,12 +16,14 @@ import {CookiesProvider} from "react-cookie";
 import LoginService from "./service/LoginService";
 
 import './util/use/variable'
-import './App.css';
+// import './App.css';
 import 'primeflex/primeflex.css';
 
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
+
+import './App.css'
 
 import DashboardLoading from "./components/dashboard/layout/DashboardLoading";
 
@@ -108,6 +110,8 @@ function App() {
             localStorage.setItem("appUserLogo", state.user.logo)
             localStorage.setItem("appLoggedIn", state.loggedIn.toString())
         } else {
+            // const service  = new LoginService()
+            // service.logout(state.user.token).then()
             localStorage.removeItem("appToken")
             localStorage.removeItem("appUserMail")
             localStorage.removeItem("appUserName")
@@ -122,10 +126,9 @@ function App() {
 
 // Check if token has expired or not on first render
     useEffect(() => {
-        if (!state.loggedIn) {
+        if (!state.loggedIn && state.user.token !== null) {
             const service  = new LoginService()
             service.checkToken(state.user.token).then(data => {
-                console.log(data)
                 if (data.status !== 'ok'){
                     // If token has expired check cookie for login.
                     if (cookies.email!==undefined && cookies.password!==undefined) {
@@ -207,8 +210,8 @@ function App() {
                                 <Route path={global.variable.dashboardPath+'/role/edit/id/:id'}>
                                     <RoleDetail title={t('edit_role')} menuKey={'6'}/>
                                 </Route>
-                                <Route path={global.variable.dashboardPath+'/setting'}>
-                                    <Setting title={t('setting')} menuKey={'7'}/>
+                                <Route path={global.variable.dashboardPath+'/settings'}>
+                                    <Setting title={t('settings')} menuKey={'7'}/>
                                 </Route>
                                 <Route path={global.variable.dashboardPath + '/*'}>
                                     <DashboardLoading title={'...'}/>

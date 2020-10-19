@@ -24,4 +24,15 @@ export default class LoginService {
         return axios.post(`${global.variable.api}secure/checkToken`, {}, axiosConfig).then(res => res.data);
     }
 
+    logout(token) {
+        let axiosConfig = {
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        };
+        return axios.post(`${global.variable.api}secure/logout`, {}, axiosConfig);
+    }
+
 }

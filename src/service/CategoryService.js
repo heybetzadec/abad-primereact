@@ -4,6 +4,10 @@ import {functions} from "../util/use/functions";
 
 export default class CategoryService {
 
+    getCategories(langId){
+        return axios.get(`${global.variable.api}category/all/lang/${langId}`).then(res => res.data);
+    }
+
     getPaginationCategories(per, lang, page){
         let language = global.variable.languages.find(element => element.code === lang)
         return axios.get(`${global.variable.api}category/per/${per}/lang/${language.id}?page=${page}`).then(res => res.data);

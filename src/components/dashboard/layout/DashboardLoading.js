@@ -1,11 +1,13 @@
 import React from 'react';
+import DashboardPage from "./DashboardPage";
+import { ProgressBar } from 'primereact/progressbar';
 
-const DashboardLoading = () => {
+const DashboardLoading = (props) => {
 
     return (
-        <>
-            <h2>DashboardLoading</h2>
-        </>
+        <DashboardPage title={props.title} menuKey={props.menuKey}>
+            <ProgressBar mode="indeterminate" style={{ height: '6px' }} />
+        </DashboardPage>
     );
 };
 

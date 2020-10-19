@@ -4,7 +4,7 @@ import DashboardPage from "./layout/DashboardPage";
 const Setting = props => {
     return (
         <DashboardPage title={props.title} menuKey={props.menuKey}>
-            Setting
+            <h2>Setting</h2>
         </DashboardPage>
     )
 };

@@ -5,7 +5,7 @@ const Roles = props => {
 
     return (
         <DashboardPage title={props.title} menuKey={props.menuKey}>
-            Roles
+            <h2>Roles</h2>
         </DashboardPage>
     )
 };

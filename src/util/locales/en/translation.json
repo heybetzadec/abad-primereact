@@ -7,8 +7,6 @@
   "invalid_login_credentials": "Invalid login credentials.",
   "server_not_working" : "Server not working!",
   "have_some_issues": "Have some issues!",
-  "input_email": "Please input your email!",
-  "input_password": "Please input your password!",
   "users": "Users",
   "add_user": "Add user",
   "edit_user": "Edit user",
@@ -48,5 +46,11 @@
   "mp_error": "Image must smaller than 2MB!",
   "image": "Image",
   "language": "Language",
-  "content": "Content"
+  "content": "Content",
+  "profile": "Profile",
+  "quit": "Quit",
+  "add": "Add",
+  "error": "Error!",
+  "warn": "Warn!",
+  "dashboard_login": "Login to Dashboard"
 }

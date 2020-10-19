@@ -1,24 +1,24 @@
-import React, {useState} from 'react';
-import {InputText} from "primereact/inputtext";
-import {Tooltip} from "primereact/tooltip";
+import React, {useContext, useState} from 'react';
 import {Link} from "react-router-dom";
-import {CSSTransition} from "react-transition-group";
-import {Button} from "primereact/button";
 import {TieredMenu} from "primereact/tieredmenu";
+import {useTranslation} from "react-i18next";
+import DispatchContext from "../../../util/context/DispatchContext";
 
 const AppTopBar = (props) => {
+    const {t} = useTranslation();
+    const appDispatch = useContext(DispatchContext)
 
-    const [activeMenuIndex, setActiveMenuIndex] = useState(0);
-    const [menu, setMenu] = useState(<TieredMenu model={[]} popup ref={el => this.menu = el} id="overlay_tmenu" />);
+    // eslint-disable-next-line no-unused-vars
+    const [menu, setMenu] = useState(<TieredMenu model={[]} popup id="overlay_tmenu" />);
 
     const items = [
         {
-            label:'Profile',
+            label: t('profile'),
             icon:'pi pi-fw pi-user',
             url:`${global.variable.dashboardPath}/profile`
         },
         {
-            label:'Settings',
+            label: t('settings'),
             icon:'pi pi-fw pi-cog',
             url:`${global.variable.dashboardPath}/settings`
         },
@@ -26,52 +26,28 @@ const AppTopBar = (props) => {
             separator:true
         },
         {
-            label:'Quit',
+            label: t('quit'),
             icon:'pi pi-fw pi-power-off',
-            command:()=>{ console.log('logout') }
+            command:()=>{ appDispatch({ type: "logout" }) }
         }
     ];
 
-    function onMenuButtonClick(){
-        console.log('onMenuButtonClick')
-    }
-
-    function resetMenuActive(){
-        console.log('resetMenuActive')
-    }
-
-    function topbarMenu(){
-        console.log('topbarMenu')
-    }
-
-    function onMenuEnter(){
-        console.log('onMenuEnter')
-    }
-
-    function toggleMenu(e, val) {
-        setActiveMenuIndex(value=>value === 1 ? 0 : 1)
-        console.log(e)
-    }
 
     return (
         <div className="layout-topbar">
 
             <button type="button" className="p-link menu-button" onClick={props.onMenuButtonClick} aria-haspopup aria-label="Menu">
-                <i className="pi pi-bars"></i>
+                <i className="pi pi-bars"/>
             </button>
-            <Link to="/" className="logo" aria-label="PrimeReact logo">
-                <img style={{width:100}} alt="logo" src="./abad.png" />
+            <Link to="/" className="logo" aria-label="Abad logo">
+                <img style={{width:100}} alt="logo" src={global.variable.url+'image/abad.png'} />
             </Link>
-
-
 
             <div className="app-theme">
                 <TieredMenu model={items} popup ref={el => setMenu(el)} id="overlay_tmenu" />
                 <Link to="#" onClick={(event) => setMenu(menu => menu.toggle(event))}>
-                    <img className="rounded_user" src="./user.jpg"/>
+                    <img className="rounded_user" src={global.variable.url+'image/user.jpg'} alt="user"/>
                 </Link>
-
-                {/*<Button icon="pi pi-user" className="p-button-rounded p-button-info p-button-outlined" onClick={(event) => setMenu(menu => menu.toggle(event))} aria-haspopup aria-controls="overlay_tmenu"/>*/}
             </div>
 
         </div>
