@@ -1,11 +1,12 @@
 import React from 'react';
+import WebPage from "./layout/WebPage";
 
-const HomePage = () => {
+const HomePage = (props) => {
 
     return (
-        <>
-            <h2>HomePage</h2>
-        </>
+        <WebPage title={props.title} menuKey={props.menuKey}>
+            <h1>HomePage</h1>
+        </WebPage>
     );
 };
 

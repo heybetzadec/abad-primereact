@@ -1,4 +1,4 @@
-import React, {useState, useContext, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 import {Card} from "primereact/card";
 import {Link} from "react-router-dom";
 import {InputText} from "primereact/inputtext";
@@ -19,7 +19,6 @@ const Login = () => {
     const appState = useContext(StateContext)
     const appDispatch = useContext(DispatchContext)
     const history = useHistory();
-    const service  = new LoginService()
     const [remember, setRemember] = useState(false)
     // eslint-disable-next-line no-unused-vars
     const [toast, setToast] = useState(<Toast  />)
@@ -124,47 +123,7 @@ const Login = () => {
                 </div>
             </div>
         </div>
-        // <div className="p-grid center-login">
-        //     <Toast ref={(el) => setToast(el)} position="top-center"/>
-        //
-        //
-        //     <div className="p-col-12 p-md-6 p-lg-4"/>
-        //     <div className="p-col-12 p-md-6 p-lg-4">
-        //         <div className="p-d-flex p-jc-center">
-        //             <Link to="/" className="logo" aria-label="Abad logo">
-        //                 <img style={{width:150,marginBottom:'1em'}} alt="logo" src={global.variable.url+'image/abad_dark.png'} />
-        //             </Link>
-        //         </div>
-        //
-        //         <div className="box">
-        //             <Card>
-        //                 <h1>{t('login')}</h1>
-        //                 <div className="p-fluid">
-        //                     <div className="p-field">
-        //                         <label htmlFor="mail">{t('mail')}</label>
-        //                         <InputText id="mail" type="text" className={error.mail==='' ? '' : 'p-invalid p-d-block'}/>
-        //                         <small id="mailError" className={error.mail==='' ? '' : 'p-invalid p-d-block'}>{error.mail}</small>
-        //                     </div>
-        //                     <div className="p-field">
-        //                         <label htmlFor="password">{t('password')}</label>
-        //                         <InputText id="password" type="password" className={error.password==='' ? '' : 'p-invalid p-d-block'}/>
-        //                         <small id="passwordError" className={error.password==='' ? '' : 'p-invalid p-d-block'}>{error.password}</small>
-        //                     </div>
-        //                     <div className="p-field">
-        //                         <div className="p-field-checkbox">
-        //                             <Checkbox inputId="remember" onChange={()=>{setRemember(oldValue => !oldValue)}} checked={remember}/>
-        //                             <label htmlFor="remember">{t('remember_me')}</label>
-        //                         </div>
-        //                     </div>
-        //                     <div className="p-field">
-        //                         <Button style={{marginTop:10}} type="button" label={t('login')} onClick={submit}/>
-        //                     </div>
-        //                 </div>
-        //             </Card>
-        //         </div>
-        //     </div>
-        //     <div className="p-col-12 p-md-6 p-lg-4"/>
-        // </div>
+
     );
 };
 

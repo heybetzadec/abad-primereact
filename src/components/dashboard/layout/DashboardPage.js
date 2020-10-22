@@ -9,9 +9,10 @@ import {useTranslation} from "react-i18next";
 import {Link} from "react-router-dom";
 import {useHistory} from "react-router-dom";
 
-import '../../../util/style/dashboard.css'
 import StateContext from "../../../util/context/StateContext";
 import LoadingPage from "../../website/layout/LoadingPage";
+
+// import '../../../util/asset/dashboard.css'
 
 const DashboardPage = (props) => {
     const {t} = useTranslation();
@@ -21,7 +22,6 @@ const DashboardPage = (props) => {
 
 
     useEffect(() => {
-
         if (props.title === undefined){
             document.title = global.variable.appName
         } else {

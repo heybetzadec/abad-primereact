@@ -15,13 +15,15 @@ import NotFound from "./components/website/layout/NotFound";
 import {CookiesProvider} from "react-cookie";
 import LoginService from "./service/LoginService";
 
-import './util/use/variable'
-// import './App.css';
-import 'primeflex/primeflex.css';
 
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
+import 'primeflex/primeflex.css';
+
+import './util/use/variable'
+
+
 
 import './App.css'
 
@@ -158,7 +160,9 @@ function App() {
                     <Router>
                         <Suspense fallback={window.location.href.includes(global.variable.dashboardPath) ? <DashboardLoading /> : <LoadingPage/> }>
                             <Switch>
-                                <Route exact path="/" component={HomePage}/>
+                                <Route exact path="/">
+                                    <HomePage title={t('home')} menuKey={'1'}/>
+                                </Route>
                                 <Route path={global.variable.dashboardPath} exact>
                                     <Dashboard title={t('dashboard')} menuKey={'1'}/>
                                 </Route>

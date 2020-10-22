@@ -1,11 +1,10 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useContext, useEffect} from 'react';
 import DashboardPage from "./layout/DashboardPage";
 import {useTranslation} from "react-i18next";
 import CategoryService from "../../service/CategoryService";
 import StateContext from "../../util/context/StateContext";
 import {Fieldset} from "primereact/fieldset";
 import {InputText} from "primereact/inputtext";
-import {Dropdown} from "primereact/dropdown";
 import {InputTextarea} from "primereact/inputtextarea";
 
 const CategoryDetail = (props) => {

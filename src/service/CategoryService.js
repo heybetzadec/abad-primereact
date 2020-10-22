@@ -8,6 +8,10 @@ export default class CategoryService {
         return axios.get(`${global.variable.api}category/all/lang/${langId}`).then(res => res.data);
     }
 
+    createCategory(token){
+        return axios.post(`${global.variable.secureApi}category/create`, {}, functions.tokenHeader(token))
+    }
+
     getPaginationCategories(per, lang, page){
         let language = global.variable.languages.find(element => element.code === lang)
         return axios.get(`${global.variable.api}category/per/${per}/lang/${language.id}?page=${page}`).then(res => res.data);
@@ -28,7 +32,7 @@ export default class CategoryService {
     updateCategory(token, data, key){
         return axios.post(`${global.variable.secureApi}category/edit/key/${key}`, data, functions.tokenHeader(token))
     }
-
+    
     removeCategory(token, key) {
         return axios.post(`${global.variable.secureApi}category/remove/key/${key}`, {}, functions.tokenHeader(token))
     }
